@@ -1,0 +1,24 @@
+import random
+from datetime import datetime
+
+def generate_weather(city):
+    temps = range(-5, 41)
+    conditions = ["Sunny", "Cloudy", "Partly Cloudy", "Rain", "Showers", "Thunderstorm", "Snow", "Fog"]
+    temp = random.choice(temps)
+    cond = random.choice(conditions)
+    feels = temp + random.choice([-3, -2, -1, 0, 1, 2, 3])
+    humidity = random.randint(20, 95)
+
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+    return (f"{now} — Weather for {city.title()}:\n"
+            f"  Condition: {cond}\n"
+            f"  Temperature: {temp}°C (feels like {feels}°C)\n"
+            f"  Humidity: {humidity}%\n")
+
+def main():
+    print("=== Simple Weather Story Generator ===")
+    city = input("Enter city name: ").strip() or "Your City"
+    print(generate_weather(city))
+
+if __name__ == "__main__":
+    main()
